@@ -6,15 +6,17 @@
 
 div.container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 }
 
 header {
   height: 100px;
+  display: flex;
 }
 
 main {
   flex: 1;
+  display: flex;
 }
 
 main.center-content {
@@ -24,4 +26,5 @@ main.center-content {
 
 footer {
   height: 50px;
+  display: flex;
 }
