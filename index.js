@@ -2,6 +2,8 @@ const express = require("express");
 const app = express();
 const server = require("http").createServer(app);
 const path = require("path");
+const fs = require("fs");
+const fetch = require("node-fetch");
 
 const apiRouter = require("./routes/api");
 
@@ -16,8 +18,35 @@ app.use("/css", express.static(path.join(__dirname, "css")), (req, res) => {
   });
 });
 
+app.use("/images", express.static(path.join(__dirname, "images")), (req, res) => {
+  res.render("error", {
+    status: 404,
+    message: "File Not Found."
+  });
+});
+
 app.get("/", (req, res) => {
-  res.render("index");
+  fs.readFile("./README.md", "utf8", (err, file) => {
+    if (err) {
+      return res.json({status: err.number, message: err.message});
+    }
+    let data = {
+      "text": file,
+      "mode": "gfm",
+      "context": "FFGFlash/ffg-sudoku"
+    }
+    fetch("https://api.github.com/markdown", {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: {"Content-Type": "application/json"}
+    }).then(res=>res.text()).then(data => {
+      res.render("index", {
+        readme: data.replace("<br>", "")
+      });
+    }).catch(err => {
+      res.json({data: JSON.stringify(data), status: err.number, message: err.message});
+    });
+  });
 });
 
 app.use("/api", apiRouter);
