@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <%-include("partials/head", {title: `Error ${error}: ${message}`})-%>
+  </head>
+  <body>
+    <div class="container">
+      <%-include("partials/header")-%>
+      <main class="center-content">
+        <div class="error-content">
+          <h1>Error <%-error-%>:</h1>
+          <p><%-message-%></p>
+        </div>
+      </main>
+      <%-include("partials/footer")-%>
+    </div>
+  </body>
+</html>

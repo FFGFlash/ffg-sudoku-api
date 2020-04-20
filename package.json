@@ -1,0 +1,35 @@
+{
+  "name": "ffg-sudoku",
+  "version": "1.0.0",
+  "description": "A Sudoku Web API for Generating True Sudokus.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node .",
+    "test": "cls & nodemon ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FFGFlash/ffg-sudoku.git"
+  },
+  "keywords": [
+    "sudoku",
+    "node",
+    "heroku"
+  ],
+  "author": "Drake Taylor",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/FFGFlash/ffg-sudoku/issues"
+  },
+  "homepage": "https://github.com/FFGFlash/ffg-sudoku#readme",
+  "dependencies": {
+    "ejs": "^3.0.2",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.3"
+  },
+  "engines": {
+    "node": "12.4.0"
+  }
+}
