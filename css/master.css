@@ -81,6 +81,13 @@ footer::after {
   clear: both;
 }
 
+.markdown-body p:first-of-type {
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .markdown-body br {
   display: none;
 }
