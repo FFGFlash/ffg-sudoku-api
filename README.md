@@ -15,12 +15,12 @@ Sudoku Web API used to solve, generate, grade and validate [Sudokus](https://en.
     * expert
     * random
 ##### Example:
-`https://ffg-sudoku.herokuapp.com/api/puzzle?difficulty=easy`
+`https://ffg-sudoku.herokuapp.com/api/puzzle?difficulty=beginner`
 ##### Response:
 ```json
 {
     "type": "rows",
-    "difficulty": "easy",
+    "difficulty": "beginner",
     "board": [
         [5,3,0,0,7,0,0,0,0],
         [6,0,0,1,9,5,0,0,0],
@@ -54,7 +54,7 @@ fetch("https://ffg-sudoku.herokuapp.com/api/solve", {
 ##### Response:
 ```json
 {
-    "difficulty": "easy",
+    "difficulty": "beginner",
     "status": "solved",
     "solution": [
         [5,3,4,6,7,8,9,1,2],
@@ -88,7 +88,7 @@ fetch("https://ffg-sudoku.herokuapp.com/api/grade", {
 ##### Response:
 ```json
 {
-    "difficulty": "easy"
+    "difficulty": "beginner"
 }
 ```
 #### /api/validate
