@@ -81,6 +81,14 @@ footer::after {
   clear: both;
 }
 
+.markdown-body br {
+  display: none;
+}
+
+.markdown-body img {
+  background: none;
+}
+
 footer span, footer nav {
   display: block;
   line-height: 32px;

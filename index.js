@@ -41,7 +41,7 @@ app.get("/", (req, res) => {
       headers: {"Content-Type": "application/json"}
     }).then(res=>res.text()).then(data => {
       res.render("index", {
-        readme: data.replace("<br>", "")
+        readme: data
       });
     }).catch(err => {
       res.json({data: JSON.stringify(data), status: err.number, message: err.message});
