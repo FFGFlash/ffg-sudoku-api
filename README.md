@@ -1,6 +1,8 @@
 # FFG Sudoku
+![](https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Sudoku_Puzzle_by_L2G-20050714_standardized_layout.svg/250px-Sudoku_Puzzle_by_L2G-20050714_standardized_layout.svg.png)
+![](https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Sudoku_Puzzle_by_L2G-20050714_solution_standardized_layout.svg/250px-Sudoku_Puzzle_by_L2G-20050714_solution_standardized_layout.svg.png)
 ## Overview
-Sudoku Web API used to solve, generate, grade and validate True Sudokus.
+Sudoku Web API used to solve, generate, grade and validate [Sudokus](https://en.wikipedia.org/wiki/Sudoku).
 ## API
 `https://ffg-sudoku.herokuapp.com/api`
 ### Get
