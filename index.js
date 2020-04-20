@@ -3,6 +3,8 @@ const app = express();
 const server = require("http").createServer(app);
 const path = require("path");
 
+const apiRouter = require("./routes/api");
+
 app.set("view engine", "ejs");
 app.set("views", "views");
 app.set("json spaces", 2);
@@ -17,6 +19,8 @@ app.use("/css", express.static(path.join(__dirname, "css")), (req, res) => {
 app.get("/", (req, res) => {
   res.render("index");
 });
+
+app.use("/api", apiRouter);
 
 app.use((req, res) => {
   res.render("error", {
