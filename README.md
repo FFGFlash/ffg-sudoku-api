@@ -2,19 +2,19 @@
 ## Overview
 Sudoku Web API used to solve, generate, grade and validate True Sudokus.
 ## API
+`https://ffg-sudoku.herokuapp.com/api`
 ### Get
-Puzzle - returns a True Sudoku
-`https://ffg-sudoku.herokuapp.com/api/puzzle?[difficulty]`
-Arguments -
+#### /api/puzzle
+##### Arguments:
 - Difficulty:
     * beginner
     * intermediate
     * advanced
     * expert
     * random
-Example:
-    https://ffg-sudoku.herokuapp.com/api/puzzle?difficulty=easy
-Response:
+##### Example:
+`https://ffg-sudoku.herokuapp.com/api/puzzle?difficulty=easy`
+##### Response:
 ```json
 {
     "type": "rows",
@@ -33,15 +33,14 @@ Response:
 }
 ```
 ### Post
-Solve - returns the solved Sudoku
-`https://ffg-sudoku.herokuapp.com/api/solve`
-Arguments -
-- Board - A 2d array of values
+#### /api/solve
+##### Arguments:
+- Board: A 2d array of values
 - Type:
     * rows (default)
     * nonets
     * columns
-Example:
+##### Example:
 ```js
 let data = {"type":"rows","board":[[5,3,0,0,7,0,0,0,0],[6,0,0,1,9,5,0,0,0],[0,9,8,0,0,0,0,6,0],[8,0,0,0,6,0,0,0,3],[4,0,0,0,2,0,0,0,6],[7,0,0,0,2,0,0,0,6],[0,6,0,0,0,0,2,8,0],[0,0,0,4,1,9,0,0,5],[0,0,0,0,8,0,0,7,9]]};
 fetch("https://ffg-sudoku.herokuapp.com/api/solve", {
@@ -50,7 +49,7 @@ fetch("https://ffg-sudoku.herokuapp.com/api/solve", {
     "headers": {"Content-Type": "application/json"}
 }).then(res => res.json()).then(console.log).catch(console.warn);
 ```
-Response:
+##### Response:
 ```json
 {
     "difficulty": "easy",
@@ -68,15 +67,14 @@ Response:
     ]
 }
 ```
-Grade - returns the difficulty of the Sudoku
-`https://ffg-sudoku.herokuapp.com/api/grade`
-Arguments -
-- Board - A 2d array of values
+#### /api/grade
+##### Arguments:
+- Board: A 2d array of values
 - Type:
     * rows (default)
     * nonets
     * columns
-Example:
+##### Example:
 ```js
 let data = {"type":"rows","board":[[5,3,0,0,7,0,0,0,0],[6,0,0,1,9,5,0,0,0],[0,9,8,0,0,0,0,6,0],[8,0,0,0,6,0,0,0,3],[4,0,0,0,2,0,0,0,6],[7,0,0,0,2,0,0,0,6],[0,6,0,0,0,0,2,8,0],[0,0,0,4,1,9,0,0,5],[0,0,0,0,8,0,0,7,9]]};
 fetch("https://ffg-sudoku.herokuapp.com/api/grade", {
@@ -85,21 +83,20 @@ fetch("https://ffg-sudoku.herokuapp.com/api/grade", {
     "headers": {"Content-Type": "application/json"}
 }).then(res => res.json()).then(console.log).catch(console.warn);
 ```
-Response:
+##### Response:
 ```json
 {
     "difficulty": "easy"
 }
 ```
-Validate - returns the status of the puzzle
-`https://ffg-sudoku.herokuapp.com/api/validate`
-Arguments -
-- Board - A 2d array of values
+#### /api/validate
+##### Arguments:
+- Board: A 2d array of values
 - Type:
     * rows (default)
     * nonets
     * columns
-Example:
+##### Example:
 ```js
 let data = {"type":"rows","board":[[5,3,0,0,7,0,0,0,0],[6,0,0,1,9,5,0,0,0],[0,9,8,0,0,0,0,6,0],[8,0,0,0,6,0,0,0,3],[4,0,0,0,2,0,0,0,6],[7,0,0,0,2,0,0,0,6],[0,6,0,0,0,0,2,8,0],[0,0,0,4,1,9,0,0,5],[0,0,0,0,8,0,0,7,9]]};
 fetch("https://ffg-sudoku.herokuapp.com/api/validate", {
@@ -108,7 +105,7 @@ fetch("https://ffg-sudoku.herokuapp.com/api/validate", {
     "headers": {"Content-Type": "application/json"}
 }).then(res => res.json()).then(console.log).catch(console.warn);
 ```
-Response:
+##### Response:
 ```json
 {
     "status": "solved"
