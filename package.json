@@ -1,5 +1,5 @@
 {
-  "name": "ffg-sudoku",
+  "name": "ffg-sudoku-api",
   "version": "1.0.0",
   "description": "A Sudoku Web API for Generating True Sudokus.",
   "main": "index.js",
