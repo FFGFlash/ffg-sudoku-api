@@ -22,6 +22,7 @@ Sudoku Web API used to solve, generate, grade and validate [Sudokus](https://en.
 {
     "type": "rows",
     "difficulty": "beginner",
+    "status": 9,
     "board": [
         [5,3,0,0,7,0,0,0,0],
         [6,0,0,1,9,5,0,0,0],
@@ -57,8 +58,8 @@ fetch("https://ffg-sudoku.herokuapp.com/api/solve", {
 {
     "type": "rows",
     "difficulty": "beginner",
-    "status": "valid:unique",
-    "solution": [
+    "status": 5,
+    "board": [
         [5,3,4,6,7,8,9,1,2],
         [6,7,2,1,9,5,3,4,8],
         [1,9,8,3,4,2,5,6,7],
@@ -112,6 +113,6 @@ fetch("https://ffg-sudoku.herokuapp.com/api/validate", {
 ##### Response:
 ```json
 {
-    "status": "valid:unique"
+    "status": 9
 }
 ```
