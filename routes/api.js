@@ -1,22 +1,18 @@
 const express = require("express");
 const router = express.Router();
+const Sudoku = require("ffg-sudoku");
 
-router.get("/puzzle", (req, res) => {
-  res.json({
-    type: "rows",
-    difficulty: "easy",
-    board: [
-      [5,3,0,0,7,0,0,0,0],
-      [6,0,0,1,9,5,0,0,0],
-      [0,9,8,0,0,0,0,6,0],
-      [8,0,0,0,6,0,0,0,3],
-      [4,0,0,0,2,0,0,0,6],
-      [7,0,0,0,2,0,0,0,6],
-      [0,6,0,0,0,0,2,8,0],
-      [0,0,0,4,1,9,0,0,5],
-      [0,0,0,0,8,0,0,7,9]
-    ]
-  });
+router.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Credentials", "*");
+  res.header("Access-Control-Allow-Methods", "*");
+  res.header("Access-Control-Allow-Headers", "*");
+  next();
+});
+
+router.get("/puzzle", async (req, res) => {
+  let sudoku = await Sudoku.generate({});
+  res.json(sudoku);
 });
 
 router.post("/solve", (req, res) => {
