@@ -27,7 +27,7 @@ Sudoku Web API used to solve, generate, grade and validate [Sudokus](https://en.
         [6,0,0,1,9,5,0,0,0],
         [0,9,8,0,0,0,0,6,0],
         [8,0,0,0,6,0,0,0,3],
-        [4,0,0,0,2,0,0,0,6],
+        [4,0,0,8,0,3,0,0,1],
         [7,0,0,0,2,0,0,0,6],
         [0,6,0,0,0,0,2,8,0],
         [0,0,0,4,1,9,0,0,5],
@@ -45,7 +45,7 @@ Sudoku Web API used to solve, generate, grade and validate [Sudokus](https://en.
     * columns
 ##### Example:
 ```js
-let data = {"type":"rows","board":[[5,3,0,0,7,0,0,0,0],[6,0,0,1,9,5,0,0,0],[0,9,8,0,0,0,0,6,0],[8,0,0,0,6,0,0,0,3],[4,0,0,0,2,0,0,0,6],[7,0,0,0,2,0,0,0,6],[0,6,0,0,0,0,2,8,0],[0,0,0,4,1,9,0,0,5],[0,0,0,0,8,0,0,7,9]]};
+let data = {"type":"rows","board":[[5,3,0,0,7,0,0,0,0],[6,0,0,1,9,5,0,0,0],[0,9,8,0,0,0,0,6,0],[8,0,0,0,6,0,0,0,3],[4,0,0,8,0,3,0,0,1],[7,0,0,0,2,0,0,0,6],[0,6,0,0,0,0,2,8,0],[0,0,0,4,1,9,0,0,5],[0,0,0,0,8,0,0,7,9]]};
 fetch("https://ffg-sudoku.herokuapp.com/api/solve", {
     "method": "POST",
     "body": JSON.stringify(data),
@@ -55,8 +55,9 @@ fetch("https://ffg-sudoku.herokuapp.com/api/solve", {
 ##### Response:
 ```json
 {
+    "type": "rows",
     "difficulty": "beginner",
-    "status": "solved",
+    "status": "valid:unique",
     "solution": [
         [5,3,4,6,7,8,9,1,2],
         [6,7,2,1,9,5,3,4,8],
@@ -79,7 +80,7 @@ fetch("https://ffg-sudoku.herokuapp.com/api/solve", {
     * columns
 ##### Example:
 ```js
-let data = {"type":"rows","board":[[5,3,0,0,7,0,0,0,0],[6,0,0,1,9,5,0,0,0],[0,9,8,0,0,0,0,6,0],[8,0,0,0,6,0,0,0,3],[4,0,0,0,2,0,0,0,6],[7,0,0,0,2,0,0,0,6],[0,6,0,0,0,0,2,8,0],[0,0,0,4,1,9,0,0,5],[0,0,0,0,8,0,0,7,9]]};
+let data = {"type":"rows","board":[[5,3,0,0,7,0,0,0,0],[6,0,0,1,9,5,0,0,0],[0,9,8,0,0,0,0,6,0],[8,0,0,0,6,0,0,0,3],[4,0,0,8,0,3,0,0,1],[7,0,0,0,2,0,0,0,6],[0,6,0,0,0,0,2,8,0],[0,0,0,4,1,9,0,0,5],[0,0,0,0,8,0,0,7,9]]};
 fetch("https://ffg-sudoku.herokuapp.com/api/grade", {
     "method": "POST",
     "body": JSON.stringify(data),
@@ -101,7 +102,7 @@ fetch("https://ffg-sudoku.herokuapp.com/api/grade", {
     * columns
 ##### Example:
 ```js
-let data = {"type":"rows","board":[[5,3,0,0,7,0,0,0,0],[6,0,0,1,9,5,0,0,0],[0,9,8,0,0,0,0,6,0],[8,0,0,0,6,0,0,0,3],[4,0,0,0,2,0,0,0,6],[7,0,0,0,2,0,0,0,6],[0,6,0,0,0,0,2,8,0],[0,0,0,4,1,9,0,0,5],[0,0,0,0,8,0,0,7,9]]};
+let data = {"type":"rows","board":[[5,3,0,0,7,0,0,0,0],[6,0,0,1,9,5,0,0,0],[0,9,8,0,0,0,0,6,0],[8,0,0,0,6,0,0,0,3],[4,0,0,8,0,3,0,0,1],[7,0,0,0,2,0,0,0,6],[0,6,0,0,0,0,2,8,0],[0,0,0,4,1,9,0,0,5],[0,0,0,0,8,0,0,7,9]]};
 fetch("https://ffg-sudoku.herokuapp.com/api/validate", {
     "method": "POST",
     "body": JSON.stringify(data),
@@ -111,6 +112,6 @@ fetch("https://ffg-sudoku.herokuapp.com/api/validate", {
 ##### Response:
 ```json
 {
-    "status": "solved"
+    "status": "valid:unique"
 }
 ```
