@@ -3,7 +3,8 @@
 ![](https://i.imgur.com/A2mmGSk.png)
 ![](https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Sudoku_Puzzle_by_L2G-20050714_solution_standardized_layout.svg/250px-Sudoku_Puzzle_by_L2G-20050714_solution_standardized_layout.svg.png)
 ## Overview
-Sudoku Web API used to solve, generate, grade and validate [Sudokus](https://en.wikipedia.org/wiki/Sudoku).
+Sudoku Web API used to solve, generate, grade and validate [Sudokus](https://en.wikipedia.org/wiki/Sudoku). This uses my npm module for node.js, ffg-sudoku which can be found on [GitHub](https://github.com/ffgflash/ffg-sudoku) and [NPM](https://www.npmjs.com/package/ffg-sudoku). While the algorithms used to solve, generate, grade and validate the Sudokus aren't the most efficient, they do however generate true sudokus, which means they will only have one solution.<br/>
+The problem I was hoping to solve with this API is that the other web APIs I found had flaws, for example [UTEP Sudoku Web Service](http://www.cs.utep.edu/cheon/ws/sudoku/) is hosted on an unsecure domain, and [Segoku](https://github.com/berto/sugoku) which worked, but doesn't guarantee true sudokus. While both are phenomenal web APIs, I wanted true sudokus that were able to be run on secure domains. This brought me to the idea to make my own API, introducing ffg-sudoku! Which originally was only going to be the API, but I realized I could split it both into a NPM Module and the API.
 ## API
 `https://ffg-sudoku.herokuapp.com/api`
 ### Get
@@ -112,3 +113,5 @@ fetch("https://ffg-sudoku.herokuapp.com/api/validate", {
     "status": 9
 }
 ```
+## Support:
+If you would like to support me, then you can donate to me through [PayPal](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=G29DQMEDMVJUU&currency_code=USD&source=url)
