@@ -18,23 +18,23 @@ router.get("/puzzle", async (req, res) => {
 });
 
 router.post("/solve", async (req, res, next) => {
-  if (!(req.body && req.body.type && req.body.difficulty && req.body.board)) return next();
-  let {type, board, difficulty} = req.body;
-  let sudoku = await new Sudoku(board, type, difficulty).solve();
+  if (!(req.body && req.body.type && req.body.board)) return next();
+  let {type, board} = req.body;
+  let sudoku = await new Sudoku(board, type, null).solve();
   res.json(sudoku);
 });
 
 router.post("/grade", async (req, res, next) => {
-  if (!(req.body && req.body.type && req.body.difficulty && req.body.board)) return next();
-  let {type, board, difficulty} = req.body;
-  let sudoku = await new Sudoku(board, type, difficulty).grade();
+  if (!(req.body && req.body.type && req.body.board)) return next();
+  let {type, board} = req.body;
+  let sudoku = await new Sudoku(board, type, null).grade();
   res.json(sudoku);
 });
 
 router.post("/validate", async (req, res, next) => {
-  if (!(req.body && req.body.type && req.body.difficulty && req.body.board)) return next();
-  let {type, board, difficulty} = req.body;
-  let sudoku = await new Sudoku(board, type, difficulty).validate();
+  if (!(req.body && req.body.type && req.body.board)) return next();
+  let {type, board} = req.body;
+  let sudoku = await new Sudoku(board, type, null).validate();
   res.json(sudoku);
 });
 
