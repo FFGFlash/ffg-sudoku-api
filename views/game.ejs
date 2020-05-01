@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <%-include("partials/head", {title: "FFG Sudoku"})-%>
+    <script src="/js/p5.min.js" charset="utf-8"></script>
+    <script src="/js/game.js" charset="utf-8"></script>
+  </head>
+  <body>
+    <div class="container">
+      <%-include("partials/header")-%>
+      <main class="center-content">
+        <div id="game-container">
+          <div>
+            <h3>Controls</h3>
+            <ul>
+              <li>0-9: Used to enter numbers into the grid, either as notes or values depending on mode.</li>
+              <li>Shift: Used to change modes.</li>
+              <li>D: Used to change difficulty.</li>
+              <li>N: Used to generate a new puzzle.</li>
+              <li>LMB: Used to select a tile.</li>
+            </ul>
+          </div>
+        </div>
+      </main>
+      <%-include("partials/footer")-%>
+    </div>
+  </body>
+</html>

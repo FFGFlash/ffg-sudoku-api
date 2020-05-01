@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <%-include("partials/head", {title: "API"})-%>
+    <script src="/js/api.test.js" charset="utf-8"></script>
+  </head>
+  <body>
+    <div class="container">
+      <%-include("partials/header")-%>
+      <main>
+        <form id="api-form" class="big-form">
+          <div class="form-group">
+            <select id="api-select" class="form-select api-disable" name="api-select">
+              <option value="0" selected>/api/puzzle</option>
+              <option value="1">/api/solve</option>
+              <option value="2">/api/validate</option>
+              <option value="3">/api/grade</option>
+            </select>
+            <input type="text" id="url" style="flex:1;" name="url" value="https://ffg-sudoku.herokuapp.com/api/puzzle?difficulty=random&type=rows" readonly />
+          </div>
+          <div class="form-group">
+            <label for="difficulty-select">Difficulty:</label>
+            <select id="difficulty-select" style="flex:1;" class="form-select api-disable" name="difficulty-select">
+              <option value="random" selected>Random</option>
+              <option value="beginner">Beginner</option>
+              <option value="intermediate">Intermediate</option>
+              <option value="advanced">Advanced</option>
+              <option value="expert">Expert</option>
+            </select>
+            <label for="type-select">Type:</label>
+            <select id="type-select" style="flex:1;" class="form-select api-disable" name="type-select">
+              <option value="rows" selected>Rows</option>
+              <option value="nonets">Nonets</option>
+              <option value="columns">Columns</option>
+            </select>
+            <input type="submit" class="api-disable" value="Fetch">
+          </div>
+          <div class="form-group">
+            <label for="board">Board:</label>
+            <input type="text" style="flex:1;" id="board" name="board" value="[]" readonly />
+          </div>
+          <div class="form-group">
+            <article id="api-out" style="flex:1;" class="code-body">
+              <pre><code class="json"></code></pre>
+            </article>
+          </div>
+        </form>
+      </main>
+      <%-include("partials/footer")-%>
+    </div>
+  </body>
+</html>

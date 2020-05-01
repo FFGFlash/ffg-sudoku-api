@@ -10,6 +10,10 @@ router.use((req, res, next) => {
   next();
 }, express.json());
 
+router.get("/", (req, res) => {
+  res.render("api");
+});
+
 router.get("/puzzle", async (req, res) => {
   let difficulty = req.query.difficulty || "random";
   let type = req.query.type || "rows";
@@ -23,7 +27,7 @@ router.post("/solve", async (req, res, next) => {
     message: "Missing Parameters."
   });
   let {type, board} = req.body;
-  let sudoku = await new Sudoku(board, type, null).solve();
+  let sudoku = await Sudoku.solve(board, type);
   res.status(200).json(sudoku);
 });
 
@@ -33,7 +37,7 @@ router.post("/grade", async (req, res, next) => {
     message: "Missing Parameters."
   });
   let {type, board} = req.body;
-  let sudoku = await new Sudoku(board, type, null).grade();
+  let sudoku = await Sudoku.grade(board);
   res.status(200).json(sudoku);
 });
 
@@ -43,7 +47,7 @@ router.post("/validate", async (req, res, next) => {
     message: "Missing Parameters."
   });
   let {type, board} = req.body;
-  let sudoku = await new Sudoku(board, type, null).validate();
+  let sudoku = await Sudoku.validate(board, type);
   res.status(200).json(sudoku);
 });
 

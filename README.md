@@ -10,6 +10,10 @@ The problem I was hoping to solve with this API is that the other web APIs I fou
 ### Get
 #### /api/puzzle
 ##### Arguments:
+- Type:
+    * rows
+    * nonets
+    * columns
 - Difficulty:
     * beginner
     * intermediate

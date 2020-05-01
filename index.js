@@ -11,17 +11,24 @@ app.set("view engine", "ejs");
 app.set("views", "views");
 app.set("json spaces", 2);
 
+app.use("/js", express.static(path.join(__dirname, "js")), (req, res) => {
+  res.render("error", {
+    status: 404,
+    message: "Script Not Found."
+  });
+});
+
 app.use("/css", express.static(path.join(__dirname, "css")), (req, res) => {
   res.render("error", {
     status: 404,
-    message: "File Not Found."
+    message: "Stylesheet Not Found."
   });
 });
 
 app.use("/images", express.static(path.join(__dirname, "images")), (req, res) => {
   res.render("error", {
     status: 404,
-    message: "File Not Found."
+    message: "Image Not Found."
   });
 });
 
@@ -47,6 +54,10 @@ app.get("/", (req, res) => {
       res.json({data: JSON.stringify(data), status: err.number, message: err.message});
     });
   });
+});
+
+app.get("/play", (req, res) => {
+  res.render("game");
 });
 
 app.use("/api", apiRouter);
