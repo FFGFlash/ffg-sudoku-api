@@ -14,28 +14,44 @@ router.get("/puzzle", async (req, res) => {
   let difficulty = req.query.difficulty || "random";
   let type = req.query.type || "rows";
   let sudoku = await Sudoku.generate({type: type, difficulty: difficulty});
-  res.json(sudoku);
+  res.status(200).json(sudoku);
 });
 
 router.post("/solve", async (req, res, next) => {
-  if (!(req.body && req.body.type && req.body.board)) return next();
+  if (!(req.body && req.body.type && req.body.board)) return res.status(400).json({
+    status: 400,
+    message: "Missing Parameters."
+  });
   let {type, board} = req.body;
   let sudoku = await new Sudoku(board, type, null).solve();
-  res.json(sudoku);
+  res.status(200).json(sudoku);
 });
 
 router.post("/grade", async (req, res, next) => {
-  if (!(req.body && req.body.type && req.body.board)) return next();
+  if (!(req.body && req.body.type && req.body.board)) return res.status(400).json({
+    status: 400,
+    message: "Missing Parameters."
+  });
   let {type, board} = req.body;
   let sudoku = await new Sudoku(board, type, null).grade();
-  res.json(sudoku);
+  res.status(200).json(sudoku);
 });
 
 router.post("/validate", async (req, res, next) => {
-  if (!(req.body && req.body.type && req.body.board)) return next();
+  if (!(req.body && req.body.type && req.body.board)) return res.status(400).json({
+    status: 400,
+    message: "Missing Parameters."
+  });
   let {type, board} = req.body;
   let sudoku = await new Sudoku(board, type, null).validate();
-  res.json(sudoku);
+  res.status(200).json(sudoku);
+});
+
+router.use((req, res) => {
+  res.status(404).json({
+    status: 404,
+    message: "Route not found."
+  });
 });
 
 module.exports = router;
