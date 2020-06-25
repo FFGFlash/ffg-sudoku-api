@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Sudoku = require("ffg-sudoku");
 
-router.use((req, res, next) => {
+router.use((_, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Credentials", "*");
   res.header("Access-Control-Allow-Methods", "*");
@@ -10,7 +10,7 @@ router.use((req, res, next) => {
   next();
 }, express.json());
 
-router.get("/", (req, res) => {
+router.get("/", (_, res) => {
   res.render("api");
 });
 
@@ -21,7 +21,7 @@ router.get("/puzzle", async (req, res) => {
   res.status(200).json(sudoku);
 });
 
-router.post("/solve", async (req, res, next) => {
+router.post("/solve", async (req, res) => {
   if (!(req.body && req.body.type && req.body.board)) return res.status(400).json({
     status: 400,
     message: "Missing Parameters."
@@ -31,17 +31,17 @@ router.post("/solve", async (req, res, next) => {
   res.status(200).json(sudoku);
 });
 
-router.post("/grade", async (req, res, next) => {
+router.post("/grade", async (req, res) => {
   if (!(req.body && req.body.type && req.body.board)) return res.status(400).json({
     status: 400,
     message: "Missing Parameters."
   });
-  let {type, board} = req.body;
+  let {board} = req.body;
   let sudoku = await Sudoku.grade(board);
   res.status(200).json(sudoku);
 });
 
-router.post("/validate", async (req, res, next) => {
+router.post("/validate", async (req, res) => {
   if (!(req.body && req.body.type && req.body.board)) return res.status(400).json({
     status: 400,
     message: "Missing Parameters."
@@ -51,7 +51,7 @@ router.post("/validate", async (req, res, next) => {
   res.status(200).json(sudoku);
 });
 
-router.use((req, res) => {
+router.use((_, res) => {
   res.status(404).json({
     status: 404,
     message: "Route not found."

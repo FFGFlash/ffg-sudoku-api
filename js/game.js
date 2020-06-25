@@ -135,7 +135,7 @@ class Board {
 	}
 
 	static generateBoardData(difficulty) {
-		return new Promise((resolve, reject) => {
+		return new Promise((resolve, _) => {
 			loadJSON(`/api/puzzle?difficulty=${difficulty}&type=nonets`, json => {
 				resolve(json);
 			});
@@ -155,7 +155,6 @@ class Board {
 
 	get unusedValues() {
 		let retVal = [];
-		let values = this.values;
 		let numbers = [1,2,3,4,5,6,7,8,9];
 		for (let number of numbers) {
 			if (this.getCount(number) < 9) retVal.push(number);

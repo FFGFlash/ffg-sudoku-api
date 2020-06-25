@@ -11,28 +11,28 @@ app.set("view engine", "ejs");
 app.set("views", "views");
 app.set("json spaces", 2);
 
-app.use("/js", express.static(path.join(__dirname, "js")), (req, res) => {
+app.use("/js", express.static(path.join(__dirname, "js")), (_, res) => {
   res.render("error", {
     status: 404,
     message: "Script Not Found."
   });
 });
 
-app.use("/css", express.static(path.join(__dirname, "css")), (req, res) => {
+app.use("/css", express.static(path.join(__dirname, "css")), (_, res) => {
   res.render("error", {
     status: 404,
     message: "Stylesheet Not Found."
   });
 });
 
-app.use("/images", express.static(path.join(__dirname, "images")), (req, res) => {
+app.use("/images", express.static(path.join(__dirname, "images")), (_, res) => {
   res.render("error", {
     status: 404,
     message: "Image Not Found."
   });
 });
 
-app.get("/", (req, res) => {
+app.get("/", (_, res) => {
   fs.readFile("./README.md", "utf8", (err, file) => {
     if (err) {
       return res.json({status: err.number, message: err.message});
@@ -56,13 +56,13 @@ app.get("/", (req, res) => {
   });
 });
 
-app.get("/play", (req, res) => {
+app.get("/play", (_, res) => {
   res.render("game");
 });
 
 app.use("/api", apiRouter);
 
-app.use((req, res) => {
+app.use((_, res) => {
   res.render("error", {
     status: 404,
     message: "Page Not Found."
